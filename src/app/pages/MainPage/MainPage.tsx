@@ -59,7 +59,7 @@ export function MainPage() {
           <h2>Base inicial pronta</h2>
           <p>
             No próximo passo vamos separar a sidebar, toolbar e cards em
-            componentes reutilizáveis.
+            componentes reutilizáveis. Vou fazer isso amanhã
           </p>
         </div>
       </section>
