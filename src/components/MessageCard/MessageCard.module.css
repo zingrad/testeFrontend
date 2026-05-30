@@ -1,0 +1,168 @@
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.card:hover {
+  background: var(--color-surface-soft);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.card:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
+
+.cardSelected {
+  background: var(--color-primary-soft) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.ownerArea {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ownerAvatar {
+  display: block;
+}
+
+.ownerCheckbox {
+  display: none;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+}
+
+/* Quando não houver seleção ativa, mostrar o checkbox ao passar o mouse sobre o card */
+.card:hover .ownerAvatar {
+  display: none;
+}
+
+.card:hover .ownerCheckbox {
+  display: grid;
+}
+
+/* Quando houver seleção ativa, mostrar o checkbox em todos os cards permanentemente */
+.hasSelection .ownerAvatar {
+  display: none !important;
+}
+
+.hasSelection .ownerCheckbox {
+  display: grid !important;
+}
+
+.checkboxControl {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  outline: none;
+  transition: transform 0.1s ease;
+}
+
+.checkboxControl:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.checkboxControl:active {
+  transform: scale(0.9);
+}
+
+.middleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.senderName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.timeTag {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.subjectText {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tagRow {
+  display: flex;
+  gap: 6px;
+}
+
+.inboxTag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.collaborators {
+  display: flex;
+  align-items: center;
+}
+
+.avatarWrapper {
+  margin-left: -8px;
+}
+
+.avatarWrapper:first-child {
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .rightSection {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+    margin-top: 4px;
+  }
+}

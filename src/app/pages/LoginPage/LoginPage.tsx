@@ -1,5 +1,6 @@
 import { useState, type SubmitEventHandler } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { useAuth } from "../../providers/AuthContext";
 import styles from "./LoginPage.module.css";
@@ -7,8 +8,9 @@ import styles from "./LoginPage.module.css";
 export function LoginPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { t } = useTranslation();
 
-  const [username, setUsername] = useState("Admin"); // deixei assim para facilitar
+  const [username, setUsername] = useState("Admin");
   const [password, setPassword] = useState("Admin");
   const [error, setError] = useState("");
 
@@ -18,7 +20,7 @@ export function LoginPage() {
     const success = login(username.trim(), password.trim());
 
     if (!success) {
-      setError("Usuário ou senha inválidos.");
+      setError(t("invalidCredentials"));
       return;
     }
 
@@ -35,13 +37,13 @@ export function LoginPage() {
 
           <div>
             <h1 id="login-title">enContact</h1>
-            <p>Entre para acessar sua central de atendimento.</p>
+            <p>{t("welcomeText")}</p>
           </div>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.field}>
-            <label htmlFor="username">Usuário</label>
+            <label htmlFor="username">{t("username")}</label>
             <input
               id="username"
               type="text"
@@ -55,7 +57,7 @@ export function LoginPage() {
           </div>
 
           <div className={styles.field}>
-            <label htmlFor="password">Senha</label>
+            <label htmlFor="password">{t("password")}</label>
             <input
               id="password"
               type="password"
@@ -75,11 +77,11 @@ export function LoginPage() {
           )}
 
           <button className={styles.submitButton} type="submit">
-            Entrar
+            {t("login")}
           </button>
         </form>
 
-        <p className={styles.helper}>Credenciais de teste: Admin / Admin</p>
+        <p className={styles.helper}>{t("testCredentials")}</p>
       </section>
     </main>
   );

@@ -1,0 +1,129 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emptyContainer,
+.errorContainer {
+  padding: 48px 32px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.errorContainer {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+[data-theme="dark"] .errorContainer {
+  border-color: rgba(220, 38, 38, 0.4);
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.errorIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-danger);
+}
+
+.errorText {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-danger);
+}
+
+.emptyText {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+/* Skeletons */
+.skeletonCard {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeletonAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-surface-hover);
+}
+
+.skeletonContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.skeletonHeader {
+  height: 16px;
+  width: 140px;
+  background: var(--color-surface-hover);
+  border-radius: 4px;
+}
+
+.skeletonBody {
+  height: 14px;
+  width: 80%;
+  background: var(--color-surface-hover);
+  border-radius: 4px;
+}
+
+.skeletonTag {
+  height: 18px;
+  width: 90px;
+  background: var(--color-surface-hover);
+  border-radius: var(--radius-sm);
+}
+
+.skeletonRight {
+  width: 60px;
+  height: 24px;
+  background: var(--color-surface-hover);
+  border-radius: var(--radius-sm);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .skeletonCard {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .skeletonRight {
+    align-self: flex-end;
+  }
+}
